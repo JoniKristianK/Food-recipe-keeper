@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading'; // expo install expo-app-loading
 import { useFonts } from 'expo-font';
+
+import MealsNavigator from './navigation/MealsNavigator';
 
 export default function App() {
 	let [fontsLoaded] = useFonts({
@@ -13,11 +14,7 @@ export default function App() {
 	if (!fontsLoaded) {
 		return <AppLoading />;
 	} else {
-		return (
-			<View style={styles.container}>
-				<Text>FOOD RECIPE KEEPER</Text>
-			</View>
-		);
+		return <MealsNavigator />;
 	}
 }
 
