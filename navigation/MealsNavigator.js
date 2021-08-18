@@ -19,7 +19,8 @@ import Colors from '../constants/Colors';
 const defaultStackNavOptions = {
 	headerStyle: {
 		backgroundColor: Platform.OS === 'android' ? Colors.primary : '',
-		paddingTop: 20,
+		paddingTop: 15,
+		height: 75,
 	},
 	headerTitleStyle: {
 		fontFamily: 'open-sans-bold',

@@ -1,37 +1,66 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { ScrollView, View, Image, Text, StyleSheet } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 import { MEALS } from '../data/dummy-data';
 import HeaderButton from '../components/HeaderButton';
+import DefaultText from '../components/DefaultText';
 
-const MealsDetailsScreen = ({ navigation }) => {
+const ListItem = (props) => {
+	return (
+		<View style={styles.listItem}>
+			<DefaultText>{props.children}</DefaultText>
+		</View>
+	);
+};
+
+const MealDetailScreen = ({ navigation }) => {
 	const mealId = navigation.getParam('mealId');
 
 	const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
 	return (
-		<View style={styles.screen}>
-			<Text>{selectedMeal.title}</Text>
-			<Button
-				title='Go back to Categories'
-				onPress={() => navigation.popToTop()}
+		<ScrollView>
+			<Image
+				source={{ uri: selectedMeal.imageUrl }}
+				style={styles.image}
 			/>
-		</View>
+			<View style={styles.details}>
+				<DefaultText>{selectedMeal.duration}m</DefaultText>
+				<DefaultText>
+					{selectedMeal.complexity.toUpperCase()}
+				</DefaultText>
+				<DefaultText>
+					{selectedMeal.affordability.toUpperCase()}
+				</DefaultText>
+			</View>
+			<Text style={styles.title}>ingredients</Text>
+
+			{selectedMeal.ingredients.map((ingredient, index) => (
+				<ListItem key={index}>{ingredient}</ListItem>
+			))}
+
+			<Text style={styles.title}>Steps</Text>
+			{selectedMeal.steps.map((step, index) => (
+				<ListItem key={index}>{step}</ListItem>
+			))}
+		</ScrollView>
 	);
 };
 
-MealsDetailsScreen.navigationOptions = (navigationData) => {
+MealDetailScreen.navigationOptions = (navigationData) => {
 	const mealId = navigationData.navigation.getParam('mealId');
 	const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 	return {
 		headerTitle: selectedMeal.title,
-		headerRight: () => (
+		headerRight: (
 			<HeaderButtons HeaderButtonComponent={HeaderButton}>
 				<Item
 					title='Favorite'
-					iconName={'ios-star'}
-					onPress={() => console.log('buu')}
+					iconName='ios-star'
+					onPress={() => {
+						console.log('Mark as favorite!');
+					}}
 				/>
 			</HeaderButtons>
 		),
@@ -39,11 +68,28 @@ MealsDetailsScreen.navigationOptions = (navigationData) => {
 };
 
 const styles = StyleSheet.create({
-	screen: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
+	image: {
+		width: '100%',
+		height: 200,
+	},
+	details: {
+		flexDirection: 'row',
+		padding: 15,
+		justifyContent: 'space-between',
+	},
+	title: {
+		fontFamily: 'open-sans-bold',
+		fontSize: 22,
+		textAlign: 'center',
+	},
+	listItem: {
+		marginVertical: 4,
+		marginHorizontal: 20,
+		borderColor: '#ccc',
+		backgroundColor: '#ECDEDECA',
+		borderWidth: 1,
+		padding: 10,
 	},
 });
 
-export default MealsDetailsScreen;
+export default MealDetailScreen;
