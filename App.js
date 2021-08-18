@@ -4,6 +4,9 @@ import AppLoading from 'expo-app-loading'; // expo install expo-app-loading
 import { useFonts } from 'expo-font';
 import { enableScreens } from 'react-native-screens';
 
+// disables warnings / hints for now
+console.disableYellowBox = true;
+
 enableScreens();
 
 import MealsNavigator from './navigation/MealsNavigator';
@@ -20,12 +23,3 @@ export default function App() {
 		return <MealsNavigator />;
 	}
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-});
