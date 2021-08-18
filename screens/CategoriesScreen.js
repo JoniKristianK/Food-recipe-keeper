@@ -42,12 +42,4 @@ CategoriesScreen.navigationOptions = {
 	headerTitle: 'Meal Categories',
 };
 
-const styles = StyleSheet.create({
-	screen: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-});
-
 export default CategoriesScreen;
