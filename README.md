@@ -1,5 +1,5 @@
 # Food-recipe-keeper
-Food recipe keeper (React-Native &amp; Expo)
+Food recipe keeper (React-Native, Redux &amp; Expo)
 
 * clone project
 * npm install
