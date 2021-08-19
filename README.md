@@ -7,3 +7,4 @@ Food recipe keeper (React-Native &amp; Expo)
 * npm start
 * download Expo Go to your phone from google play (android) or app store (ios)
 * open Expo Go and take picture of the QR-code
+* make sure that your phone and computer are in the same wi-fi
