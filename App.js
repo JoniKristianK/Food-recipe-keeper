@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import AppLoading from 'expo-app-loading'; // expo install expo-app-loading
 import { useFonts } from 'expo-font';
 import { enableScreens } from 'react-native-screens';
@@ -10,7 +9,9 @@ import MealsNavigator from './navigation/MealsNavigator';
 import mealsReducer from './store/reducers/meals';
 
 // disables warnings / hints for now
-console.disableYellowBox = true;
+import { LogBox } from 'react-native';
+//Ignore all log notifications
+LogBox.ignoreAllLogs();
 
 enableScreens();
 
