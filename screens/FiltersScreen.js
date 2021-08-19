@@ -34,6 +34,10 @@ const FiltersScreen = ({ navigation }) => {
 			vegan: isVegan,
 			vegetarian: isVegetarian,
 		};
+		console.log(
+			'FiltersScreen-saveFilters-appliedFilters ',
+			appliedFilters
+		);
 	}, [isGlutenFree, isLactoseFree, isVegan, isVegetarian]);
 
 	useEffect(() => {
